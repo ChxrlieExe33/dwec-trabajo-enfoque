@@ -1,0 +1,35 @@
+<form class="flex flex-col items-center justify-items-start gap-4 bg-gray-100 border-1 border-gray-200 shadow-lg shadow-gray-300/50 rounded-2xl p-8" [formGroup]="form" (ngSubmit)="handleSubmit()">
+
+  <span class="flex items-center justify-between gap-4 w-full">
+
+    <input type="text" placeholder="Nombre" class="px-6 py-2 rounded-2xl border-1 border-gray-200 shadow-md shadow-gray-200 bg-white w-[80%]" formControlName="name">
+    <input type="text" placeholder="Apellidos" class="px-6 py-2 rounded-2xl border-1 border-gray-200 shadow-md shadow-gray-200 bg-white w-[80%]" formControlName="surname">
+
+  </span>
+
+  <span class="flex items-center justify-between gap-4 w-full">
+
+    <input type="text" placeholder="Dni" class="px-6 py-2 rounded-2xl border-1 border-gray-200 shadow-md shadow-gray-200 bg-white w-[80%]" formControlName="dni">
+    <input type="text" placeholder="Teléfono" class="px-6 py-2 rounded-2xl border-1 border-gray-200 shadow-md shadow-gray-200 bg-white w-[80%]" formControlName="phone">
+
+  </span>
+
+  <span class="flex items-center justify-between w-full px-20">
+
+    <label for="dob" class="text-lg">Fecha de nacimiento</label>
+
+    <input id="dob" type="date" class="border-1 border-gray-200 shadow-md shadow-gray-200 bg-white px-6 py-4 rounded-2xl" formControlName="dateOfBirth">
+
+  </span>
+
+  <span class="flex items-center justify-between w-full px-20">
+
+    <label for="appDateTime" class="text-lg">Fecha y hora de la cita</label>
+
+    <input id="appDateTime" type="datetime-local" class="border-1 border-gray-200 shadow-md shadow-gray-200 bg-white px-6 py-4 rounded-2xl" formControlName="appDateTime">
+
+  </span>
+
+  <button type="submit" class="px-6 py-2 bg-blue-400 rounded-2xl border-1 border-gray-300 shadow-lg shadow-gray-200/70 font-bold text-white">Submit</button>
+
+</form>
