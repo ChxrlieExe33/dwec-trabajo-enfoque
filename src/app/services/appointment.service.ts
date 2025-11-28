@@ -55,4 +55,16 @@ export class AppointmentService {
 
   }
 
+  public getAllAppointments() : AppointmentModel[] {
+
+    const data = localStorage.getItem('appointments');
+
+    if (!data) {
+      return [];
+    }
+
+    return JSON.parse(data);
+
+  }
+
 }

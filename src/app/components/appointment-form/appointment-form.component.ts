@@ -3,6 +3,7 @@ import {AppointmentModel} from '../../models/appointment.model';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AppointmentService} from '../../services/appointment.service';
 import {NewAppointmentModel} from '../../models/new-appointment.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-appointment-form',
@@ -18,12 +19,12 @@ export class AppointmentFormComponent implements OnInit {
   protected appointmentData = input<AppointmentModel | undefined>();
   protected appointmentId = input<number | undefined>();
 
-  public constructor(private appointmentService: AppointmentService) {}
+  public constructor(private appointmentService: AppointmentService, private router : Router) {}
 
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
-    dni: new FormControl('', Validators.required),
+    dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
     phone: new FormControl('', Validators.required),
     appDateTime: new FormControl(new Date(), Validators.required),
     dateOfBirth: new FormControl(new Date(), Validators.required),
@@ -44,6 +45,7 @@ export class AppointmentFormComponent implements OnInit {
 
   }
 
+  // TODO: Diferentiate between new app and update.
   protected handleSubmit() {
 
     const app : NewAppointmentModel = {
@@ -57,7 +59,7 @@ export class AppointmentFormComponent implements OnInit {
 
     this.appointmentService.saveNewAppointment(app);
 
-    alert("Saved successfully.");
+    this.router.navigate(['/all-appointments']);
 
   }
 
