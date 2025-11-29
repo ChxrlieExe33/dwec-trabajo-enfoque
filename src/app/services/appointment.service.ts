@@ -67,4 +67,85 @@ export class AppointmentService {
 
   }
 
+  public getAppointmentById(appId: number) : AppointmentModel | undefined {
+
+    const data = localStorage.getItem('appointments');
+
+    if (!data) {
+      console.warn('Cita con ID ' +  appId + ' no existe.');
+      return undefined;
+    }
+
+    let apps : AppointmentModel[] = JSON.parse(data);
+
+    const app = apps.find(a => a.id === appId);
+
+    return app;
+
+  }
+
+  public updateAppointmentById(appId: number, appData: NewAppointmentModel) {
+
+    const data = localStorage.getItem('appointments');
+
+    if (!data) {
+      console.warn('No hay citas todavía');
+      return;
+    }
+
+    const apps : AppointmentModel[] = JSON.parse(data);
+
+    const appointment = apps.find(a => a.id === appId);
+
+    if (!appointment) {
+      console.warn('Cita con ID ' +  appId + ' no existe.');
+      return;
+    }
+    
+    // Mapear el array existente, actualizando el registro cuando se encuentra.
+    const updatedApps : AppointmentModel[] = apps.map(a => {
+      if (a.id === appId) {
+        a.name = appData.name;
+        a.surname = appData.surname;
+        a.dni = appData.dni;
+        a.phoneNumber = appData.phoneNumber;
+        a.dateOfBirth = appData.dateOfBirth;
+        a.dateAndTime = appData.dateAndTime;
+      }
+      return a;
+    });
+
+    localStorage.setItem('appointments', JSON.stringify(updatedApps));
+
+  }
+
+  public deleteAppointmentById(appId: number) {
+
+    const data = localStorage.getItem('appointments');
+
+    if (!data) {
+      console.warn('No hay citas todavía');
+      return;
+    }
+
+    const apps : AppointmentModel[] = JSON.parse(data);
+
+    const appointment = apps.find(a => a.id === appId);
+
+    if (!appointment) {
+      console.warn('Cita con ID ' +  appId + ' no existe.');
+      return;
+    }
+
+    const updated = apps.filter(a => a.id !== appId);
+
+    if (updated.length === 0) {
+      localStorage.removeItem('appointments');
+    } else {
+      localStorage.setItem('appointments', JSON.stringify(updated));
+    }
+
+    
+  }
+
 }

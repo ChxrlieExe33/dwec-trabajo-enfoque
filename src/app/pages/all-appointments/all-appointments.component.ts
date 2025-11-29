@@ -3,7 +3,7 @@ import { HeaderBarComponent } from "../../components/header-bar/header-bar.compo
 import { AppointmentService } from '../../services/appointment.service';
 import { AppointmentModel } from '../../models/appointment.model';
 import { DatePipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-all-appointments',
@@ -15,11 +15,29 @@ export class AllAppointmentsComponent implements OnInit {
 
   protected apps = signal<AppointmentModel[]>([]);
 
-  constructor (protected appointmentService : AppointmentService) {}
+  constructor (protected appointmentService : AppointmentService, private readonly router : Router) {}
 
   ngOnInit(): void {
     
     this.apps.set(this.appointmentService.getAllAppointments());
+
+  }
+
+  protected navigateToUpdateAppointment(appId: number) {
+
+    this.router.navigate(['/update-appointment', appId]);
+
+  }
+
+  protected handleClickedDelete(appId : number) {
+
+    if (!confirm('Estás seguro que quieres borrar cita con ID ' + appId)) {
+      return;
+    }
+
+    this.appointmentService.deleteAppointmentById(appId);
+
+    this.apps.set(this.apps().filter(a => a.id !== appId));
 
   }
 

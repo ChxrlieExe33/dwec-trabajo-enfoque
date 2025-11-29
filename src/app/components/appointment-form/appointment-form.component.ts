@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
 export class AppointmentFormComponent implements OnInit {
 
   // Datos de cita se proporcionan en caso de modificación, para citas nuevas, estarán undefined.
-  protected appointmentData = input<AppointmentModel | undefined>();
-  protected appointmentId = input<number | undefined>();
+  public appointmentData = input<AppointmentModel | undefined>();
+  public appointmentId = input<number | undefined>();
 
   public constructor(private appointmentService: AppointmentService, private router : Router) {}
 
@@ -38,6 +38,7 @@ export class AppointmentFormComponent implements OnInit {
       this.form.controls.name.patchValue(this.appointmentData()!.name);
       this.form.controls.surname.patchValue(this.appointmentData()!.surname);
       this.form.controls.dni.patchValue(this.appointmentData()!.dni);
+      this.form.controls.phone.patchValue(this.appointmentData()!.phoneNumber);
       this.form.controls.dateOfBirth.patchValue(this.appointmentData()!.dateOfBirth);
       this.form.controls.appDateTime.patchValue(this.appointmentData()!.dateAndTime);
 
@@ -45,7 +46,7 @@ export class AppointmentFormComponent implements OnInit {
 
   }
 
-  // TODO: Diferentiate between new app and update.
+  
   protected handleSubmit() {
 
     const app : NewAppointmentModel = {
@@ -57,7 +58,18 @@ export class AppointmentFormComponent implements OnInit {
       dateAndTime: this.form.controls.appDateTime.value!,
     };
 
-    this.appointmentService.saveNewAppointment(app);
+    // Si se ha proporcionado datos de una cita ya existente al componente,
+    // estamos en la página de actualizacion y queremos actualizar, en caso de que
+    // no se ha proporcinado nada, estamos en la página de creación de cita.
+    if (!this.appointmentData() && !this.appointmentId()) {
+      
+      this.appointmentService.saveNewAppointment(app);
+
+    } else {
+
+      this.appointmentService.updateAppointmentById(this.appointmentId()!, app);
+
+    }
 
     this.router.navigate(['/all-appointments']);
 
