@@ -33,7 +33,7 @@ jobs:
       run: npm ci
 
     - name: Build Angular app
-      run: npm run build -- --base-href /dwec-trabajo-enfoque
+      run: npm run build -- --base-href /dwec-trabajo-enfoque/
 
     - name: Copy index.html to 404.html
       run: cp dist/dwec-trabajo-enfoque/browser/index.html dist/dwec-trabajo-enfoque/browser/404.html
