@@ -6,6 +6,10 @@ import { UpdateAppointmentComponent } from './pages/update-appointment/update-ap
 
 export const routes: Routes = [
   {
+    path: '**',
+    redirectTo: '',
+  },
+  {
     path: '',
     component: MainPageComponent
   },
