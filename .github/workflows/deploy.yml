@@ -36,7 +36,7 @@ jobs:
       run: npm run build -- --base-href /dwec-trabajo-enfoque
 
     - name: Copy index.html to 404.html
-      run: cp docs/browser/index.html docs/browser/404.html
+      run: cp dist/dwec-trabajo-enfoque/browser/index.html dist/dwec-trabajo-enfoque/browser/404.html
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
