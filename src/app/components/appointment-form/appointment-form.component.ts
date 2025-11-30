@@ -46,7 +46,32 @@ export class AppointmentFormComponent implements OnInit {
 
   }
 
-  
+  // Métodos cortos para ver si el valor de cada control es válido, las cuales se reflejan en la interfaz.
+  get nameInvalid() {
+    return this.form.controls.name.invalid && this.form.controls.name.touched && this.form.controls.name.dirty
+  }
+
+  get surnameInvalid() {
+    return this.form.controls.surname.invalid && this.form.controls.surname.touched && this.form.controls.surname.dirty
+  }
+
+  get dniInvalid() {
+    return this.form.controls.dni.invalid && this.form.controls.dni.touched && this.form.controls.dni.dirty
+  }
+
+  get phoneInvalid() {
+    return this.form.controls.phone.invalid && this.form.controls.phone.touched && this.form.controls.phone.dirty
+  }
+
+  get dobInvalid() {
+    return this.form.controls.dateOfBirth.invalid && this.form.controls.dateOfBirth.touched && this.form.controls.dateOfBirth.dirty
+  }
+
+  get appDateTimeInvalid() {
+    return this.form.controls.appDateTime.invalid && this.form.controls.appDateTime.touched && this.form.controls.appDateTime.dirty
+  }
+
+
   protected handleSubmit() {
 
     const app : NewAppointmentModel = {
@@ -62,7 +87,7 @@ export class AppointmentFormComponent implements OnInit {
     // estamos en la página de actualizacion y queremos actualizar, en caso de que
     // no se ha proporcinado nada, estamos en la página de creación de cita.
     if (!this.appointmentData() && !this.appointmentId()) {
-      
+
       this.appointmentService.saveNewAppointment(app);
 
     } else {

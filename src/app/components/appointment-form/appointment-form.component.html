@@ -23,6 +23,14 @@
     </div>
   </div>
 
+  @if (nameInvalid) {
+    <p class="text-red-800">Nombre es obligatorio.</p>
+  }
+
+  @if(surnameInvalid){
+    <p class="text-red-800">Apellidos son obligatorios.</p>
+  }
+
   <!-- DNI & Phone Row -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="relative group">
@@ -43,6 +51,14 @@
     </div>
   </div>
 
+  @if (dniInvalid) {
+    <p class="text-red-800">DNI es obligatorio y debe tener 7 u 8 caracteres.</p>
+  }
+
+  @if(phoneInvalid){
+    <p class="text-red-800">Numero de teléfono es obligatorio.</p>
+  }
+
   <!-- Date of Birth -->
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200">
     <label for="dob" class="text-base font-medium text-gray-700">
@@ -56,6 +72,10 @@
     >
   </div>
 
+  @if(dobInvalid) {
+    <p class="text-red-800">Fecha de nacimiento es obligatorio.</p>
+  }
+
   <!-- Appointment Date & Time -->
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200">
     <label for="appDateTime" class="text-base font-medium text-gray-700">
@@ -68,6 +88,10 @@
       formControlName="appDateTime"
     >
   </div>
+
+  @if(appDateTimeInvalid) {
+    <p class="text-red-800">Fecha y hora de cita es obligatorio.</p>
+  }
 
   <!-- Submit Button -->
   <button
