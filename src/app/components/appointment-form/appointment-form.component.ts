@@ -25,7 +25,7 @@ export class AppointmentFormComponent implements OnInit {
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
     dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
-    phone: new FormControl('', Validators.required),
+    phone: new FormControl('', [Validators.required, Validators.pattern(new RegExp('^\\+?\\d+$'))]),
     appDateTime: new FormControl(new Date(), Validators.required),
     dateOfBirth: new FormControl(new Date(), Validators.required),
   })
