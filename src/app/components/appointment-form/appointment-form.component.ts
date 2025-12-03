@@ -26,7 +26,7 @@ export class AppointmentFormComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
-    dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
+    dni: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(9)]),
     phone: new FormControl('', [Validators.required, Validators.pattern(new RegExp('^\\+?\\d+$'))]),
     appDateTime: new FormControl(new Date(), Validators.required),
     dateOfBirth: new FormControl(new Date(), Validators.required),
@@ -86,8 +86,8 @@ export class AppointmentFormComponent implements OnInit {
     };
 
     // Si se ha proporcionado datos de una cita ya existente al componente,
-    // estamos en la página de actualizacion y queremos actualizar, en caso de que
-    // no se ha proporcinado nada, estamos en la página de creación de cita.
+    // estamos en la página de actualización y queremos actualizar, en caso de que
+    // no se ha proporcionado nada, estamos en la página de creación de cita.
     if (!this.appointmentData() && !this.appointmentId()) {
 
       this.appointmentService.saveNewAppointment(app);

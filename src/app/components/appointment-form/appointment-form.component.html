@@ -38,7 +38,7 @@
     <div class="relative group">
       <input
         type="text"
-        placeholder="DNI"
+        placeholder="DNI/NIE"
         class="w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none hover:shadow-md"
         formControlName="dni"
         [ngClass]="dniInvalid ? 'border-red-700 border-2' : 'border-gray-200'"
@@ -56,7 +56,7 @@
   </div>
 
   @if (dniInvalid) {
-    <p class="text-red-800">DNI es obligatorio y debe tener 7 u 8 caracteres.</p>
+    <p class="text-red-800">DNI/NIE es obligatorio y debe tener 8 u 9 caracteres.</p>
   }
 
   @if(phoneInvalid){
