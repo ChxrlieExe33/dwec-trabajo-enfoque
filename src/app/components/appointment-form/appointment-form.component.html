@@ -11,14 +11,16 @@
         placeholder="Nombre"
         class="w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none hover:shadow-md"
         formControlName="name"
+        [ngClass]="nameInvalid ? 'border-red-700 border-2' : 'border-gray-200'"
       >
     </div>
     <div class="relative group">
       <input
         type="text"
         placeholder="Apellidos"
-        class="w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none hover:shadow-md"
+        class="w-full px-5 py-3.5 rounded-xl border-1 border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none hover:shadow-md"
         formControlName="surname"
+        [ngClass]="surnameInvalid ? 'border-red-700 border-2' : 'border-gray-200'"
       >
     </div>
   </div>
@@ -39,6 +41,7 @@
         placeholder="DNI"
         class="w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none hover:shadow-md"
         formControlName="dni"
+        [ngClass]="dniInvalid ? 'border-red-700 border-2' : 'border-gray-200'"
       >
     </div>
     <div class="relative group">
@@ -47,6 +50,7 @@
         placeholder="Teléfono"
         class="w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none hover:shadow-md"
         formControlName="phone"
+        [ngClass]="phoneInvalid ? 'border-red-700 border-2' : 'border-gray-200'"
       >
     </div>
   </div>
@@ -69,6 +73,7 @@
       type="date"
       class="px-5 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none hover:bg-white"
       formControlName="dateOfBirth"
+      [ngClass]="dobInvalid ? 'border-red-700 border-2' : 'border-gray-200'"
     >
   </div>
 
@@ -86,6 +91,7 @@
       type="datetime-local"
       class="px-5 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none hover:bg-white"
       formControlName="appDateTime"
+      [ngClass]="appDateTimeInvalid ? 'border-red-700 border-2' : 'border-gray-200'"
     >
   </div>
 

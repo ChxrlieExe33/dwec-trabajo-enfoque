@@ -4,11 +4,13 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {AppointmentService} from '../../services/appointment.service';
 import {NewAppointmentModel} from '../../models/new-appointment.model';
 import { Router } from '@angular/router';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-appointment-form',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgClass
   ],
   templateUrl: './appointment-form.component.html',
   styleUrl: './appointment-form.component.css'
